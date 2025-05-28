@@ -12,9 +12,7 @@ const server = new McpServer({
         {
             name: "get-customer-details",
             description: "Get customer details by customer Number",
-            parameters: z.object({
-                customerNo: z.string().describe("Customer Number"),
-            }),
+            parameters: {},
         },
     ],
 });
@@ -22,13 +20,10 @@ const server = new McpServer({
 const getCustomerDetails = server.tool(
     "get-customer-details",
     "Get customer details",
-    {
-        customerNo: z.string().describe("Customer Number"),
-    },
-    async (params: { customerNo: string }) => {
+    async () => {
         // Simulate fetching customer details from a database or external service
         const response = await fetch(
-            `https://www.youngsinc.com/yis7beta_service/api/config/getCustomerDetails/${params.customerNo}`,
+            `https://www.youngsinc.com/yis7beta_service/api/config/getCustomerDetails/A024874`,
             {
                 headers: {
                     "Content-Type": "application/json",
